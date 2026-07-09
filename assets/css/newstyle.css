@@ -624,7 +624,7 @@ main{
     font-weight:700;
 }
 
-.counter-item span{
+.counter-item .counter-text{
     color:#fff;
     font-size:16px;
 }
