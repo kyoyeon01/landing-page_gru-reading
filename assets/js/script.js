@@ -80,3 +80,169 @@ observer.observe(counterSection);
 
 // 감시 시작
 observer.observe(counterSection);
+
+/* ==========================================
+   Compare Slider
+========================================== */
+
+const compareCards = document.querySelectorAll(".compare-card");
+
+compareCards.forEach((card) => {
+
+  const before = card.querySelector(".compare-before");
+  const after = card.querySelector(".compare-after");
+
+  const beforeContent = card.querySelector(".compare-content-before");
+  const afterContent = card.querySelector(".compare-content-after");
+
+  const divider = card.querySelector(".compare-divider");
+
+  const GAP = 34;
+  const SIDE = 24;
+  const LIMIT = 25;
+
+  let dragging = false;
+  let position = card.offsetWidth * 0.55;
+
+  update(position);
+
+  /* =====================
+      Drag Start
+  ===================== */
+
+  divider.addEventListener("pointerdown", (e) => {
+
+    dragging = true;
+
+    divider.setPointerCapture(e.pointerId);
+
+  });
+
+  /* =====================
+      Drag End
+  ===================== */
+
+  window.addEventListener("pointerup", () => {
+
+    dragging = false;
+
+  });
+
+  window.addEventListener("pointercancel", () => {
+
+    dragging = false;
+
+  });
+
+  /* =====================
+      Drag Move
+  ===================== */
+
+  window.addEventListener("pointermove", (e) => {
+
+    if (!dragging) return;
+
+    const rect = card.getBoundingClientRect();
+
+    position = e.clientX - rect.left;
+
+    position = Math.max(
+      LIMIT,
+      Math.min(position, rect.width - LIMIT)
+    );
+
+    update(position);
+
+  });
+
+  /* =====================
+      Click Move
+  ===================== */
+
+  card.addEventListener("click", (e) => {
+
+    if (dragging) return;
+
+    const rect = card.getBoundingClientRect();
+
+    position = e.clientX - rect.left;
+
+    position = Math.max(
+      LIMIT,
+      Math.min(position, rect.width - LIMIT)
+    );
+
+    update(position);
+
+  });
+
+  /* =====================
+      Resize
+  ===================== */
+
+  window.addEventListener("resize", () => {
+
+    position = card.offsetWidth * 0.55;
+
+    update(position);
+
+  });
+
+  /* =====================
+      Update
+  ===================== */
+
+
+
+
+  function update(pos) {
+
+    const cardWidth = card.offsetWidth;
+
+    /* ------------------
+        Overlay
+    ------------------ */
+
+    before.style.width = `${pos}px`;
+
+    after.style.width = `${cardWidth - pos}px`;
+
+    /* ------------------
+        Divider
+    ------------------ */
+
+    divider.style.left = `${pos}px`;
+
+    /* ------------------
+        Before Text
+    ------------------ */
+
+    const beforeWidth = Math.max(
+      pos - SIDE - 8,
+      30
+    );
+
+    beforeContent.style.left = `${SIDE}px`;
+    beforeContent.style.width = `${beforeWidth}px`;
+
+    /* ------------------
+        After Text
+    ------------------ */
+
+    const afterLeft = pos + GAP;
+
+    const afterWidth = Math.max(
+      cardWidth - afterLeft - SIDE,
+      120
+    );
+
+    afterContent.style.left = `${afterLeft}px`;
+    afterContent.style.width = `${afterWidth}px`;
+
+    const opacity = Math.max(0, Math.min(1, (pos - 70) / 60));
+
+    beforeContent.style.opacity = opacity;
+
+  }
+
+});
