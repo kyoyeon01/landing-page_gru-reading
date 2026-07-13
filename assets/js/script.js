@@ -246,3 +246,150 @@ compareCards.forEach((card) => {
   }
 
 });
+
+
+
+
+// ==================
+
+/* ==========================================
+    Process
+========================================== */
+
+const processCards = document.querySelectorAll(".process-card");
+
+const processImage = document.querySelector("#processImage");
+
+const title1 = document.querySelector("#title1");
+const title2 = document.querySelector("#title2");
+const title3 = document.querySelector("#title3");
+
+const desc1 = document.querySelector("#desc1");
+const desc2 = document.querySelector("#desc2");
+const desc3 = document.querySelector("#desc3");
+
+
+const processData = [
+
+{
+    image:"./assets/images/책_성장과정.png",
+
+    titles:[
+        "같이 읽기",
+        "연결하기",
+        "나누기"
+    ],
+
+    desc:[
+        "친구들과 함께 책을 읽으며 다양한 생각을 나누고 독서의 즐거움을 경험합니다.",
+
+        "책과 나, 책과 사회를 연결하며 사고력을 확장합니다.",
+
+        "서로의 생각을 표현하고 다양한 관점을 이해하며 논리적으로 성장합니다."
+    ]
+
+},
+
+{
+
+    image:"./assets/images/토론_성장과정.png",
+
+    titles:[
+        "질문하기",
+        "토론하기",
+        "생각 넓히기"
+    ],
+
+    desc:[
+        "책을 읽으며 스스로 질문을 만들고 호기심을 키웁니다.",
+
+        "친구들과 의견을 나누며 비판적 사고력을 기릅니다.",
+
+        "다양한 관점을 이해하며 표현력을 성장시킵니다."
+    ]
+
+},
+
+{
+
+    image:"./assets/images/만연필_성장과정.png",
+
+    titles:[
+        "생각 정리",
+        "글쓰기",
+        "성장하기"
+    ],
+
+    desc:[
+        "읽은 내용을 스스로 정리합니다.",
+
+        "자신만의 문장으로 논리적인 글을 작성합니다.",
+
+        "독서와 글쓰기를 통해 입시까지 이어집니다."
+    ]
+
+}
+
+];
+
+/* ==========================================
+    Process Click Event
+========================================== */
+
+processCards.forEach((card, index) => {
+
+    card.addEventListener("click", () => {
+
+        /* Active */
+
+        processCards.forEach((item) => {
+
+            item.classList.remove("active");
+
+        });
+
+        card.classList.add("active");
+
+        /* Data */
+
+        const current = processData[index];
+
+        /* Image */
+
+        processImage.src = current.image;
+
+        /* Title */
+
+        title1.textContent = current.titles[0];
+        title2.textContent = current.titles[1];
+        title3.textContent = current.titles[2];
+
+        /* Description */
+
+        desc1.textContent = current.desc[0];
+        desc2.textContent = current.desc[1];
+        desc3.textContent = current.desc[2];
+
+        /* Animation */
+
+        processImage.animate(
+            [
+                {
+                    opacity:0,
+                    transform:"translateY(20px)"
+                },
+
+                {
+                    opacity:1,
+                    transform:"translateY(0)"
+                }
+            ],
+            {
+                duration:350,
+                easing:"ease"
+            }
+        );
+
+    });
+
+});
