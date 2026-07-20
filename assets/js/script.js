@@ -27,6 +27,27 @@
 
 
 
+const menuBtn = document.querySelector(".menu-btn");
+const mobileMenu = document.querySelector(".mobile-menu");
+const overlay = document.querySelector(".overlay");
+
+menuBtn.addEventListener("click", () => {
+
+    menuBtn.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+    overlay.classList.toggle("active");
+
+});
+
+// 오버레이 클릭하면 닫기
+overlay.addEventListener("click", () => {
+
+    menuBtn.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+
+});
+
 
 
 // 숫자 가져오기
@@ -272,7 +293,7 @@ const desc3 = document.querySelector("#desc3");
 const processData = [
 
 {
-    image:"./assets/images/책_성장과정.png",
+    image:"./assets/images/책.png",
 
     titles:[
         "같이 읽기",
@@ -281,18 +302,18 @@ const processData = [
     ],
 
     desc:[
-        "친구들과 함께 책을 읽으며 다양한 생각을 나누고 독서의 즐거움을 경험합니다.",
+        "친구들과 함께 책을 읽으며 독서의 즐거움을 경험합니다.",
 
-        "책과 나, 책과 사회를 연결하며 사고력을 확장합니다.",
+        "책과 사회를 연결하며 사고력을 확장합니다.",
 
-        "서로의 생각을 표현하고 다양한 관점을 이해하며 논리적으로 성장합니다."
+        "서로의 생각을 표현하고 논리적으로 성장합니다."
     ]
 
 },
 
 {
 
-    image:"./assets/images/토론_성장과정.png",
+    image:"./assets/images/토론.png",
 
     titles:[
         "질문하기",
@@ -312,7 +333,7 @@ const processData = [
 
 {
 
-    image:"./assets/images/만연필_성장과정.png",
+    image:"./assets/images/만연필.png",
 
     titles:[
         "생각 정리",
@@ -393,3 +414,43 @@ processCards.forEach((card, index) => {
     });
 
 });
+
+
+// ================= f&q ================= 
+
+/* ==========================================
+    FAQ
+========================================== */
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((item) => {
+
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+
+        const isActive = item.classList.contains("active");
+
+        /* 모든 FAQ 닫기 */
+
+        faqItems.forEach((faq) => {
+
+            faq.classList.remove("active");
+
+        });
+
+        /* 현재 클릭한 FAQ 열기 */
+
+        if(!isActive){
+
+            item.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+

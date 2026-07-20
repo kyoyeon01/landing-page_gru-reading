@@ -206,21 +206,54 @@ button {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:998;
+
+}
+
+.overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
 
 /* =====================================================
    Mobile Menu
 ===================================================== */
 
 .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    padding-top: 100px;
-    background: var(--white);
-    transition: .35s;
-    z-index: 999;
+   position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+    width:280px;
+
+    height:100vh;
+
+    padding-top:100px;
+
+    background:#fff;
+
+    transition:.35s;
+
+    z-index:999;
 }
 
 .mobile-menu.active {
@@ -914,17 +947,9 @@ main {
 
 .process{
 
-    padding:120px 0;
+    padding:90px 0 100px;
 
     background:#fff;
-
-}
-
-.process .container{
-
-    width:min(100% - 48px, 1440px);
-
-    margin:0 auto;
 
 }
 
@@ -937,7 +962,7 @@ main {
 
     text-align:center;
 
-    margin-bottom:90px;
+    margin-bottom:10px;
 
 }
 
@@ -950,6 +975,8 @@ main {
     font-size:20px;
 
     font-weight:500;
+
+    line-height:1.5;
 
 }
 
@@ -974,11 +1001,13 @@ main {
 
     display:grid;
 
-    grid-template-columns:470px 560px;
+    grid-template-columns:460px 100px 540px;
 
-    justify-content:space-between;
+    justify-content:center;
 
     align-items:start;
+
+    column-gap:40px;
 
 }
 
@@ -989,9 +1018,7 @@ main {
 
 .process-left{
 
-    position:relative;
-
-    width:470px;
+    width:100%;
 
 }
 
@@ -1002,21 +1029,27 @@ main {
 
 .process-visual{
 
+    height:300px;
+
     display:flex;
 
     justify-content:center;
 
-    margin-bottom:48px;
+    align-items:center;
+
+    margin-bottom:50px;
 
 }
 
 .process-image{
 
-     width:390px;
-
     display:block;
 
-    margin:0 auto;
+    width:300px;
+
+    height:300px;
+
+    object-fit:contain;
 
 }
 
@@ -1027,34 +1060,11 @@ main {
 
 .process-list{
 
-    position:relative;
-
     display:flex;
 
     flex-direction:column;
 
-    gap:15px;
-
-}
-
-
-/* ==========================================
-    Dash
-========================================== */
-
-.process-list::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:32px;
-
-    right:-150px;
-
-    width:120px;
-
-    border-top:3px dashed #1F8B58;
+    gap:10px;
 
 }
 
@@ -1065,8 +1075,13 @@ main {
 
 .process-item{
 
-    width:320px;
-    min-height: 96px;
+    height:110px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
 
 }
 
@@ -1080,17 +1095,52 @@ main {
 
     font-weight:700;
 
-    line-height: 1.5;
+    line-height:1.3;
 
 }
 
 .process-item-desc{
 
+    max-width:320px;
+
+    min-height:54px;
+
     color:#666;
 
     font-size:14px;
-    min-height: 60px;
+
     line-height:1.8;
+
+}
+
+/* ==========================================
+    Center
+========================================== */
+
+.process-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding-top:430px;
+
+}
+
+
+/* ==========================================
+    Line
+========================================== */
+
+.process-line{
+
+    width:90px;
+
+    border-top:3px dashed #1F8B58;
+
+    transform:translateX(-80px);
 
 }
 
@@ -1101,15 +1151,31 @@ main {
 
 .process-right{
 
-    width:560px;
+    width:100%;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    padding-top:200px;
+
+}
+
+
+/* ==========================================
+    Card Wrap
+========================================== */
+
+.process-card-wrap{
 
     display:flex;
 
     flex-direction:column;
 
-    margin-top:11px;
+    gap:28px;
 
 }
+
 
 /* ==========================================
     Card
@@ -1117,21 +1183,21 @@ main {
 
 .process-card{
 
-    width:500px;
+    width:100%;
 
-    min-height:136px;
+    min-height:132px;
 
     display:flex;
 
     align-items:center;
 
-    gap:24px;
+    gap:22px;
 
-    padding:26px 30px;
+    padding:24px 28px;
 
-    border:2px solid #D8D8D8;
+    border:2px solid #D9D9D9;
 
-    border-radius:30px;
+    border-radius:28px;
 
     background:#fff;
 
@@ -1139,7 +1205,11 @@ main {
 
     text-align:left;
 
-    transition:.35s ease;
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
 
 }
 
@@ -1147,7 +1217,7 @@ main {
 
     transform:translateY(-3px);
 
-    box-shadow:0 14px 30px rgba(0,0,0,.08);
+    box-shadow:0 14px 28px rgba(0,0,0,.08);
 
 }
 
@@ -1158,11 +1228,11 @@ main {
 
 .process-card.active{
 
-    background:#F3FBF6;
+    background:#F4FBF6;
 
     border-color:#1F8B58;
 
-    box-shadow:0 10px 24px rgba(31,139,88,.08);
+    box-shadow:0 10px 24px rgba(31,139,88,.10);
 
 }
 
@@ -1185,15 +1255,11 @@ main {
 
 .process-icon{
 
-    width:84px;
+    width:78px;
 
-    height:84px;
+    height:78px;
 
     flex-shrink:0;
-
-    border-radius:50%;
-
-    background:#A8B1AA;
 
     display:flex;
 
@@ -1201,13 +1267,17 @@ main {
 
     align-items:center;
 
+    border-radius:50%;
+
+    background:#AAB2AC;
+
     transition:.35s;
 
 }
 
 .process-icon img{
 
-    width:36px;
+    width:34px;
 
     display:block;
 
@@ -1222,6 +1292,8 @@ main {
 
     flex:1;
 
+    min-height:72px;
+
 }
 
 .process-card-title{
@@ -1230,11 +1302,13 @@ main {
 
     color:#333;
 
-    font-size:24px;
+    font-size:22px;
 
     font-weight:700;
 
     line-height:1.3;
+
+    transition:.35s;
 
 }
 
@@ -1248,38 +1322,1580 @@ main {
 
 }
 
-
 /* ==========================================
-    Card Position
+    Program
 ========================================== */
 
-/* 카드1 */
+.program{
 
-.process-card1{
+    padding:120px 0;
 
-    margin-left:0;
-
-}
-
-/* 카드2 */
-
-.process-card2{
-
-    margin-top:42px;
-
-    margin-left:90px;
+    background:#1F8B58;
 
 }
 
-/* 카드3 */
 
-.process-card3{
+/* ==========================================
+    Title
+========================================== */
 
-    margin-top:42px;
+.program-head{
 
-    margin-left:32px;
+    text-align:center;
+
+    margin-bottom:90px;
 
 }
+
+.program-heading{
+
+    margin-bottom:16px;
+
+    color:#fff;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+.program-subtitle{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:20px;
+
+    font-weight:500;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+    Grid
+========================================== */
+
+.program-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:32px;
+
+    align-items:start;
+
+}
+
+
+/* ==========================================
+    Column
+========================================== */
+
+.program-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+/* ==========================================
+    Top Card
+========================================== */
+
+.program-stage{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:155px;
+
+    padding:22px 20px 34px;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    box-shadow:0 16px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+
+/* ==========================================
+    Number
+========================================== */
+
+.program-number{
+
+    width:56px;
+
+    height:56px;
+
+    margin:0 auto 14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#1F8B58;
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================
+    Grade
+========================================== */
+
+.program-grade{
+
+    margin-bottom:6px;
+
+    color:#666;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+    Name
+========================================== */
+
+.program-name{
+
+    margin-bottom:20px;
+
+    color:#1F8B58;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+    Stage Dot
+========================================== */
+
+.program-stage-dot{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:16px;
+
+    transform:translateX(-50%);
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    border:5px solid #CFCFCF;
+
+    background:#fff;
+
+}
+
+/* ==========================================
+    Line
+========================================== */
+
+.program-line{
+
+    width:2px;
+
+    height:56px;
+
+    margin:0 auto;
+
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.85) 0 6px,
+        transparent 6px 12px
+    );
+
+}
+
+
+/* ==========================================
+    Bottom Card
+========================================== */
+
+.program-card{
+
+    position:relative;
+
+    width:100%;
+
+    padding:24px;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    box-shadow:0 16px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+
+/* ==========================================
+    Green Dot
+========================================== */
+
+.program-card-dot{
+
+    position:absolute;
+
+    left:50%;
+
+    top:-13px;
+
+    transform:translateX(-50%);
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    border:5px solid #1F8B58;
+
+}
+
+
+/* ==========================================
+    Image
+========================================== */
+
+.program-image{
+
+    display:block;
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* ==========================================
+    Content
+========================================== */
+
+.program-content{
+
+    padding:0;
+
+}
+
+
+/* ==========================================
+    Card Title
+========================================== */
+
+.program-card-title{
+
+    margin-bottom:12px;
+
+    color:#333;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+
+/* ==========================================
+    List
+========================================== */
+
+.program-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.program-list li{
+
+    position:relative;
+
+    padding-left:16px;
+
+    color:#666;
+
+    font-size:15px;
+
+    line-height:1.55;
+
+}
+
+.program-list li::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:9px;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#1F8B58;
+
+}
+
+
+/* ==========================================
+    Review
+========================================== */
+
+.review{
+
+    padding:120px 0;
+
+    overflow:hidden;
+
+    background:#027941;
+
+}
+
+
+/* ==========================================
+    Title
+========================================== */
+
+.review-head{
+
+    margin-bottom:90px;
+
+    text-align:center;
+
+}
+
+.review-heading{
+
+    margin-bottom:20px;
+
+    color:#fff;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+}
+
+.review-heading span{
+
+    color:#F6D54A;
+
+}
+
+.review-subtitle{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:18px;
+
+    font-weight:400;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================================
+    Marquee
+========================================== */
+
+.review-marquee{
+
+    width:100%;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+
+/* ==========================================
+    Track
+========================================== */
+
+.review-track{
+
+    display:flex;
+
+    gap:34px;
+
+    width:max-content;
+
+}
+
+/* ==========================================
+    Card
+========================================== */
+
+.review-card{
+
+    flex:0 0 319px;
+
+    width:319px;
+
+    height:396px;
+
+    padding:32px 28px;
+
+    border-radius:21px;
+
+    background:#fff;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* ==========================================
+    Profile
+========================================== */
+
+.review-profile{
+
+    display:block;
+
+    width:96px;
+
+    height:96px;
+
+    margin:0 auto 22px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+
+/* ==========================================
+    Name
+========================================== */
+
+.review-name{
+
+    margin-bottom:8px;
+
+    color:#333;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+    Star
+========================================== */
+
+.review-star{
+
+    margin-bottom:18px;
+
+    color:#FFD54A;
+
+    font-size:18px;
+
+    text-align:center;
+
+    letter-spacing:2px;
+
+}
+
+
+/* ==========================================
+    Text
+========================================== */
+
+.review-text{
+
+    color:#272727;
+
+    font-size:14px;
+
+    line-height:1.75;
+
+    word-break:keep-all;
+    margin-top: 8px;
+    flex: 1;
+
+}
+
+
+/* ==========================================
+    Hover
+========================================== */
+
+.review-card{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.review-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 24px 50px rgba(0,0,0,.12);
+
+}
+
+/* ==========================================
+    Animation
+========================================== */
+
+.review-track{
+
+    animation:reviewMarquee 40s linear infinite;
+
+}
+
+.review-track:hover{
+
+    animation-play-state:paused;
+
+}
+
+@keyframes reviewMarquee{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    100%{
+
+        transform:translateX(calc(-319px * 6 - 34px * 6));
+
+    }
+
+}
+
+/* ==========================================
+    FAQ
+========================================== */
+
+.faq{
+
+    padding:120px 0;
+
+    background:#fff;
+
+}
+
+
+/* ==========================================
+    Title
+========================================== */
+
+.faq-head{
+
+    margin-bottom:60px;
+
+    text-align:center;
+
+}
+
+.faq-heading{
+
+    margin-bottom:14px;
+
+    color:#1F8B58;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+.faq-subtitle{
+
+    color:#666;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================================
+    List
+========================================== */
+
+.faq-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* ==========================================
+    Item
+========================================== */
+
+.faq-item{
+
+    overflow:hidden;
+
+    border:2px solid #DADADA;
+
+    border-radius:22px;
+
+    background:#fff;
+
+    transition:.35s;
+
+}
+
+
+/* ==========================================
+    Question
+========================================== */
+
+.faq-question{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 34px;
+
+    border:none;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    text-align:left;
+
+}
+
+
+/* ==========================================
+    Left
+========================================== */
+
+.faq-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+
+/* ==========================================
+    Q
+========================================== */
+
+.faq-q{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#EAF6EC;
+
+    color:#1F8B58;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================
+    Question Title
+========================================== */
+
+.faq-title{
+
+    color:#555;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    line-height:1.5;
+
+}
+
+
+/* ==========================================
+    Arrow
+========================================== */
+
+.faq-arrow{
+
+    flex-shrink:0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color:#1F8B58;
+
+    font-size:22px;
+
+    transition:.35s;
+
+}
+
+.faq-arrow i{
+
+    transition:transform .35s ease;
+
+}
+
+/* ==========================================
+    Answer
+========================================== */
+
+.faq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    background:#e9f7ea;
+
+    transition:
+        max-height .45s ease,
+        padding .45s ease;
+
+        display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.faq-answer p{
+
+width:calc(100% - 104px);
+
+    margin-left:104px;
+
+    padding:22px 34px 22px 0;
+
+    color:#555;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    box-sizing:border-box;
+
+}
+
+.faq-item.active{
+
+    border-color:#1F8B58;
+
+    box-shadow:0 14px 35px rgba(31,139,88,.08);
+
+}
+
+.faq-item.active .faq-answer{
+
+    max-height:300px;
+
+    padding:0px;
+
+}
+
+.faq-item.active .faq-arrow i{
+
+    transform:rotate(180deg);
+
+}
+
+
+/* ==========================================
+    Hover
+========================================== */
+
+.faq-item:hover{
+
+    border-color:#1F8B58;
+
+}
+
+.faq-question:hover .faq-title{
+
+    color:#1F8B58;
+
+}
+
+
+/* ==========================================
+    Contact
+========================================== */
+
+.contact{
+
+    position:relative;
+
+    padding:120px 0;
+
+    background:#1F8B58;
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================================
+    Layout
+========================================== */
+
+.contact-wrap{
+
+    display:grid;
+
+    grid-template-columns:1fr 723px;
+
+    justify-content:space-between;
+
+    align-items:start;
+
+    gap:100px;
+
+}
+
+
+/* ==========================================
+    Left
+========================================== */
+
+.contact-left{
+
+    padding-top:0px;
+
+    z-index:2;
+
+}
+
+
+/* ==========================================
+    Title
+========================================== */
+
+.contact-title{
+
+    margin-top: 5px;
+    margin-bottom:40px;
+
+}
+
+.contact-subtitle{
+
+    margin-bottom:14px;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:500;
+
+    line-height:1.5;
+
+}
+
+.contact-heading{
+
+    color:#fff;
+
+    font-size:58px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+
+/* ==========================================
+    Contact Info
+========================================== */
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.contact-info li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.contact-info img{
+
+    width:24px;
+
+    height:24px;
+
+    flex-shrink:0;
+
+}
+
+.contact-info span{
+
+    color:#fff;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================================
+    Girl Image
+========================================== */
+
+.contact-image{
+
+   position:absolute;
+
+    left:calc((100vw - 1440px) / 2 - 250px);
+
+    bottom:0;
+
+    z-index:1;
+
+}
+
+.contact-image img{
+
+    display:block;
+
+    width:760px;
+
+    height:auto;
+
+}
+
+/* ==========================================
+    Right
+========================================== */
+
+.contact-right{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+
+}
+
+
+/* ==========================================
+    Form Box
+========================================== */
+
+.contact-form-box{
+
+    width:723px;
+
+    min-height:830px;
+
+    padding:46px 46px 42px;
+
+    border-radius:36px;
+
+    background:#fff;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================
+    Head
+========================================== */
+
+.form-head{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:14px;
+
+    margin-bottom:42px;
+
+}
+
+.form-head h3{
+
+    color:#1F8B58;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+.form-head p{
+
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+.form-head span{
+
+    color:#1F8B58;
+
+}
+
+
+/* ==========================================
+    Form
+========================================== */
+
+.contact-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+/* ==========================================
+    Group
+========================================== */
+
+.form-group{
+
+    display:grid;
+
+    grid-template-columns:130px 1fr;
+
+    align-items:center;
+
+    column-gap:24px;
+
+}
+
+.form-group.textarea{
+
+    align-items:start;
+
+}
+
+
+/* ==========================================
+    Label
+========================================== */
+
+.form-group label{
+
+    color:#333;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    line-height:1.5;
+
+}
+
+.form-group label span{
+
+    color:#1F8B58;
+
+}
+
+
+/* ==========================================
+    Input
+========================================== */
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+
+    height:56px;
+
+    padding:0 22px;
+
+    border:1px solid #D9D9D9;
+
+    border-radius:28px;
+
+    background:#fff;
+
+    outline:none;
+
+    font-size:15px;
+
+    color:#333;
+
+    transition:.3s;
+
+}
+
+
+/* ==========================================
+    Textarea
+========================================== */
+
+.form-group textarea{
+
+    width:100%;
+
+    height:220px;
+
+    padding:18px 22px;
+
+    border:1px solid #D9D9D9;
+
+    border-radius:22px;
+
+    resize:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:#333;
+
+}
+
+
+/* ==========================================
+    Placeholder
+========================================== */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:#B9B9B9;
+
+}
+
+
+/* ==========================================
+    Focus
+========================================== */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:#1F8B58;
+
+    box-shadow:0 0 0 3px rgba(31,139,88,.08);
+
+}
+
+
+/* ==========================================
+    Select
+========================================== */
+
+.form-group select{
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    -moz-appearance:none;
+
+    cursor:pointer;
+
+    padding-right:56px;
+
+    background:
+        #fff
+        url("../images/selectarrow.svg")
+        no-repeat
+        right 22px center;
+
+    background-size:16px;
+
+}
+
+.form-check{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:10px;
+
+}
+
+.form-check label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+}
+
+.form-check input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:#1F8B58;
+
+}
+
+.form-check span{
+
+    color:#666;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+.form-check a{
+
+    color:#666;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-decoration:underline;
+
+}
+
+
+/* ==========================================
+    Button
+========================================== */
+
+.contact-btn{
+
+    width:100%;
+
+    height:60px;
+
+    margin-top:12px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#FFD44F;
+
+    color:#444;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.contact-btn:hover{
+
+    background:#FFC933;
+
+}
+
+/* ==========================================
+    Footer
+========================================== */
+
+.footer{
+
+    padding:60px 0;
+
+    background:#1E1E1E;
+
+}
+
+
+/* ==========================================
+    Layout
+========================================== */
+
+.footer-wrap{
+
+    display:grid;
+
+    grid-template-columns:170px 1fr auto;
+
+    align-items:center;
+
+    column-gap:60px;
+
+}
+
+
+/* ==========================================
+    Logo
+========================================== */
+
+.footer-logo{
+
+    flex-shrink:0;
+
+}
+
+.footer-logo img{
+
+    display:block;
+
+    width:150px;
+
+    height:auto;
+
+}
+
+
+/* ==========================================
+    Company Info
+========================================== */
+
+.footer-info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    column-gap:36px;
+
+    row-gap:12px;
+
+}
+
+.footer-info p{
+
+    color:#E8E8E8;
+
+    font-size:17px;
+
+    font-weight:400;
+
+    line-height:1.7;
+
+}
+
+.footer-info small{
+
+    grid-column:1 / -1;
+
+    margin-top:18px;
+
+    color:#B8B8B8;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+    SNS
+========================================== */
+
+.footer-sns{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.footer-sns li{
+
+    list-style:none;
+
+}
+
+.footer-sns a{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:#505050;
+
+    color:#fff;
+
+    font-size:24px;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.footer-sns a:hover{
+
+    background:#1F8B58;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+
 
 
 
@@ -1291,6 +2907,77 @@ main {
 /* Tablet */
 
 @media (max-width:768px) {
+
+
+    .gnb{
+
+        display:none;
+
+    }
+
+    .menu-btn{
+
+        display:flex;
+
+    }
+
+
+    /* .menu-btn{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:6px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    background:#fff;
+
+    cursor:pointer;
+
+} */
+
+.menu-btn span{
+
+    width:28px;
+
+    height:2px;
+
+    background:#333;
+
+}
+
+
+
+.nav{
+
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    width:100%;
+
+    background:#fff;
+
+    display:none;
+
+}
+
+.nav.active{
+
+    display:block;
+
+}
+
 
     .container {
         width: min(100% - 48px, 1440px);
@@ -1468,8 +3155,765 @@ main {
         font-size: 16px;
     }
     
+/* ======== 프로세스 ========  */
+
+.process{
+
+    padding:80px 0;
+
+}
+
+.process-head{
+
+    margin-bottom:50px;
+
+}
+
+.process-subtitle{
+
+    font-size:18px;
+
+}
+
+.process-heading{
+
+    font-size:34px;
+
+}
 
 
+/* Body */
+
+.process-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:50px;
+
+}
+
+
+/* 점선 삭제 */
+
+.process-center{
+
+    display:none;
+
+}
+
+
+/* 오른쪽 카드 */
+
+.process-right{
+
+    order:1;
+
+    width:100%;
+
+    padding-top:0;
+
+}
+
+.process-card-wrap{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.process-card{
+
+     min-height:90px;
+
+    padding:16px 14px;
+
+    gap:10px;
+
+    border-radius:18px;
+
+}
+
+.process-icon{
+
+    width:44px;
+
+    height:44px;
+
+}
+
+.process-icon img{
+
+    width:22px;
+
+}
+
+.process-card-title{
+
+    font-size:18px;
+
+}
+
+.process-card-desc{
+
+    font-size:12px;
+
+    line-height:1.6;
+
+}
+
+
+/* 왼쪽 */
+
+.process-left{
+
+    order:2;
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:1fr 260px;
+
+    align-items:center;
+
+    gap:40px;
+
+}
+
+.process-visual{
+
+    order:2;
+
+    margin:0;
+}
+
+.process-image{
+
+  width:220px;
+
+    height:220px;
+}
+
+.process-list{
+ order:1;
+
+    gap:18px;
+
+}
+
+.process-item{
+
+    width:100%;
+
+    height:auto;
+
+    text-align:center;
+
+}
+
+.process-item-title{
+
+    font-size:22px;
+
+    margin-bottom:8px;
+
+}
+
+.process-item-desc{
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    font-size:14px;
+
+    min-height:auto;
+
+}
+
+
+
+/* ======= 프로그램 =======  */
+
+.program{
+
+    padding:90px 0;
+
+}
+
+.program-head{
+
+    margin-bottom:55px;
+
+}
+
+.program-heading{
+
+    font-size:34px;
+
+}
+
+.program-subtitle{
+
+    font-size:17px;
+
+}
+
+/* Grid */
+
+.program-grid{
+
+    grid-template-columns:1fr;
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    gap:44px;
+
+}
+
+/* Column */
+
+.program-column{
+
+    width:100%;
+
+}
+
+/* Top Card */
+
+.program-stage{
+
+    width:320px;
+
+    min-height:120px;
+
+    padding:18px 18px 24px;
+
+    border-radius:20px;
+}
+
+/* Number */
+
+.program-number{
+
+    width:42px;
+
+    height:42px;
+
+    margin-bottom:10px;
+
+    font-size:17px;
+
+}
+
+/* Grade */
+
+.program-grade{
+
+    font-size:13px;
+
+}
+
+/* Name */
+
+.program-name{
+
+    margin-bottom:16px;
+
+    font-size:20px;
+
+}
+
+/* Stage Dot */
+
+.program-stage-dot{
+
+    width:18px;
+
+    height:18px;
+
+    bottom:14px;
+
+    border-width:4px;
+
+}
+
+/* Line */
+
+.program-line{
+
+    height:34px;
+
+}
+
+/* Bottom Card */
+
+.program-card{
+
+     width:320px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+}
+
+/* Card Dot */
+
+.program-card-dot{
+
+    width:20px;
+
+    height:20px;
+
+    top:-10px;
+
+    border-width:4px;
+
+}
+
+/* Image */
+
+.program-image{
+
+    height:180px;
+
+    border-radius:14px;
+
+    margin-bottom:14px;
+
+}
+
+/* Title */
+
+.program-card-title{
+
+    margin-bottom:8px;
+
+    font-size:18px;
+
+}
+
+/* List */
+
+.program-list{
+
+    gap:4px;
+
+}
+
+.program-list li{
+
+    font-size:14px;
+
+    line-height:1.45;
+
+}
+
+/* ======= 리뷰 =======  */
+
+.review{
+
+    padding:90px 0;
+
+}
+
+.review-head{
+
+    margin-bottom:60px;
+
+}
+
+.review-heading{
+
+    font-size:34px;
+
+}
+
+.review-subtitle{
+
+    font-size:16px;
+
+}
+
+
+/* Track */
+
+.review-track{
+
+    gap:22px;
+
+}
+
+
+/* Card */
+
+.review-card{
+
+    flex:0 0 260px;
+
+    width:260px;
+
+    height:340px;
+
+    padding:24px 20px;
+
+    border-radius:18px;
+
+}
+
+
+/* Profile */
+
+.review-profile{
+
+    width:78px;
+
+    height:78px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* Name */
+
+.review-name{
+
+    font-size:16px;
+
+}
+
+
+/* Star */
+
+.review-star{
+
+    font-size:16px;
+
+    margin-bottom:14px;
+
+}
+
+
+/* Text */
+
+.review-text{
+
+    font-size:13px;
+
+    line-height:1.65;
+
+}
+
+/* =========== faq ============  */
+
+.faq{
+
+        padding:90px 0;
+
+    }
+
+    .faq-head{
+
+        margin-bottom:50px;
+
+    }
+
+    .faq-heading{
+
+        font-size:34px;
+
+    }
+
+    .faq-subtitle{
+
+        font-size:16px;
+
+        line-height:1.7;
+
+    }
+
+    .faq-list{
+
+        gap:14px;
+
+    }
+
+    .faq-item{
+
+        border-radius:18px;
+
+    }
+
+    .faq-question{
+
+        padding:18px 24px;
+
+    }
+
+    .faq-left{
+
+        gap:18px;
+
+    }
+
+    .faq-q{
+
+        width:36px;
+
+        height:36px;
+
+        font-size:17px;
+
+    }
+
+    .faq-title{
+
+        font-size:18px;
+
+        line-height:1.5;
+
+    }
+
+    .faq-arrow{
+
+        font-size:18px;
+
+    }
+
+    .faq-answer p{
+
+        width:calc(100% - 78px);
+
+        margin-left:78px;
+
+        padding:20px 24px 20px 0;
+
+        font-size:15px;
+
+        line-height:1.8;
+
+        box-sizing:border-box;
+
+    }
+
+.contact{
+
+    padding:90px 0;
+
+}
+
+.contact-wrap{
+
+    grid-template-columns:1fr;
+
+    gap:60px;
+
+}
+
+.contact-left{
+
+    width:100%;
+
+}
+
+.contact-title{
+
+    margin:0 0 38px;
+
+}
+
+.contact-subtitle{
+
+    font-size:18px;
+
+}
+
+.contact-heading{
+
+    font-size:46px;
+
+}
+
+.contact-info{
+
+    gap:18px;
+
+}
+
+.contact-info li{
+
+    gap:12px;
+
+}
+
+.contact-info span{
+
+    font-size:16px;
+
+}
+
+/* 아이 이미지 제거 */
+
+.contact-image{
+
+    display:none;
+
+}
+
+.contact-right{
+
+    justify-content:center;
+
+}
+
+.contact-form-box{
+
+    width:100%;
+
+    max-width:723px;
+
+    min-height:auto;
+
+    padding:40px 34px;
+
+    border-radius:30px;
+
+}
+
+.form-head{
+
+    margin-bottom:34px;
+
+}
+
+.form-head h3{
+
+    font-size:30px;
+
+}
+
+.form-group{
+
+    grid-template-columns:120px 1fr;
+
+    column-gap:20px;
+
+}
+
+.form-group label{
+
+    font-size:16px;
+
+}
+
+.form-group input,
+.form-group select{
+
+    height:52px;
+
+    font-size:15px;
+
+}
+
+.form-group textarea{
+
+    height:200px;
+
+    font-size:15px;
+
+}
+
+.contact-btn{
+
+    height:56px;
+
+    font-size:18px;
+
+}
+ 
+/* ====== footer ====  */
+
+
+.footer{
+
+    padding:45px 0;
+
+}
+
+.footer-wrap{
+
+    display:grid;
+
+    grid-template-columns:120px 1fr auto;
+
+    align-items:center;
+
+    column-gap:26px;
+
+}
+
+.footer-logo img{
+
+    width:100px;
+
+}
+
+.footer-info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    column-gap:15px;
+
+    row-gap:5px;
+
+}
+
+.footer-info p{
+
+    font-size:10px;
+
+    line-height:1.5;
+
+}
+
+.footer-info small{
+
+    grid-column:1 / -1;
+
+    margin-top:10px;
+
+    font-size:10px;
+
+}
+
+.footer-sns{
+
+    gap:10px;
+
+}
+
+.footer-sns a{
+
+    width:40px;
+
+    height:40px;
+
+    font-size:20px;
+
+}
 
 
 }
@@ -1676,107 +4120,742 @@ main {
     }
 
 
-    .process{
+/* ======= 프로세스 =======  */
+.process{
+
+    padding:70px 0;
+
+}
+
+.process-head{
+
+    margin-bottom:40px;
+
+}
+
+.process-subtitle{
+
+    font-size:16px;
+
+}
+
+.process-heading{
+
+    font-size:28px;
+
+}
+
+
+/* 카드 */
+
+.process-card{
+    flex:1;
+
+    min-height:60px;
+
+    padding:10px 8px;
+
+    gap:6px;
+
+    border-radius:12px;
+
+}
+
+.process-icon{
+    width:22px;
+
+    height:22px;
+
+}
+
+.process-icon img{
+
+    width:12px;
+
+}
+
+.process-card-title{
+
+   font-size:11px;
+
+    white-space:nowrap;
+
+    margin:0;
+
+}
+
+.process-card-desc{
+
+   display: none;
+
+}
+
+.process-card-content{
+
+    min-height:auto;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+/* 이미지 */
+
+.process-image{
+
+    width:190px;
+
+    height:190px;
+
+}
+
+
+/* 텍스트 */
+
+.process-item-title{
+
+    font-size:20px;
+
+}
+
+.process-item-desc{
+
+    max-width:280px;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+.process-card-wrap{
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:center;
+
+    gap:8px;
+    
+    width: 100%;
+}
+
+.process-right{
+
+    width:100%;
+
+}
+
+
+
+
+/* ========= 프로그램 ========  */
+.program{
+
+    padding:70px 0;
+
+}
+
+.program-head{
+
+    margin-bottom:45px;
+
+}
+
+.program-heading{
+
+    font-size:28px;
+
+}
+
+.program-subtitle{
+
+    font-size:15px;
+
+}
+
+/* Grid */
+
+.program-grid{
+
+    max-width:320px;
+
+    gap:36px;
+
+}
+
+/* Top Card */
+
+.program-stage{
+
+    width:270px;
+
+    min-height:105px;
+
+    padding:16px 14px 20px;
+
+    border-radius:18px;
+}
+
+/* Number */
+
+.program-number{
+
+    width:34px;
+
+    height:34px;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+}
+
+/* Grade */
+
+.program-grade{
+
+    font-size:12px;
+
+}
+
+/* Name */
+
+.program-name{
+
+    margin-bottom:14px;
+
+    font-size:18px;
+
+}
+
+/* Stage Dot */
+
+.program-stage-dot{
+
+    width:16px;
+
+    height:16px;
+
+    bottom:12px;
+
+    border-width:3px;
+
+}
+
+/* Line */
+
+.program-line{
+
+    height:28px;
+
+}
+
+/* Bottom Card */
+
+.program-card{
+
+     width:270px;
+
+    padding:16px;
+
+    border-radius:18px;
+
+}
+
+/* Card Dot */
+
+.program-card-dot{
+
+    width:18px;
+
+    height:18px;
+
+    top:-9px;
+
+    border-width:3px;
+
+}
+
+/* Image */
+
+.program-image{
+
+    height:145px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+}
+
+/* Title */
+
+.program-card-title{
+
+    margin-bottom:6px;
+
+    font-size:16px;
+
+}
+
+/* List */
+
+.program-list{
+
+    gap:3px;
+
+}
+
+.program-list li{
+
+    font-size:12px;
+
+    line-height:1.45;
+
+}
+
+
+
+.review{
+
+    padding:70px 0;
+
+}
+
+.review-head{
+
+    margin-bottom:45px;
+
+}
+
+.review-heading{
+
+    font-size:22px;
+
+}
+
+.review-subtitle{
+
+    font-size:15px;
+
+}
+
+
+/* Track */
+
+.review-track{
+
+    gap:16px;
+
+}
+
+
+/* Card */
+
+.review-card{
+
+    flex:0 0 210px;
+
+    width:210px;
+
+    height:300px;
+
+    padding:18px 16px;
+
+    border-radius:18px;
+
+}
+
+
+/* Profile */
+
+.review-profile{
+
+    width:64px;
+
+    height:64px;
+
+    margin-bottom:14px;
+
+}
+
+
+/* Name */
+
+.review-name{
+
+    font-size:14px;
+
+}
+
+
+/* Star */
+
+.review-star{
+
+    font-size:14px;
+
+    margin-bottom:12px;
+
+}
+
+
+/* Text */
+
+.review-text{
+
+    font-size:12px;
+
+    line-height:1.55;
+
+}
+
+/* ======= f&q =======  */
+
+.faq{
 
         padding:70px 0;
 
     }
 
-    .process-head{
+    .faq-head{
 
-        margin-bottom:40px;
-
-    }
-
-    .process-subtitle{
-
-        font-size:16px;
+        margin-bottom:36px;
 
     }
 
-    .process-heading{
+    .faq-heading{
 
         font-size:28px;
 
     }
 
-    .process-image{
+    .faq-subtitle{
 
-        width:190px;
+        font-size:14px;
 
-        margin-bottom:40px;
-
-    }
-
-    .process-right{
-
-        gap:14px;
+        line-height:1.6;
 
     }
 
-    .process-card{
+    .faq-list{
 
-        min-height:100px;
-
-        padding:16px;
-
-        gap:16px;
-
-        border-radius:20px;
+        gap:10px;
 
     }
 
-    .process-icon{
+    .faq-item{
 
-        width:52px;
-
-        height:52px;
+        border-radius:14px;
 
     }
 
-    .process-icon img{
+    .faq-question{
 
-        width:22px;
-
-    }
-
-    .process-card-text h3{
-
-        font-size:16px;
-
-        margin-bottom:4px;
+        padding:16px 18px;
 
     }
 
-    .process-card-text p{
+    .faq-left{
 
-        display:none;
-
-    }
-
-    .process-list{
-
-        gap:24px;
+        gap:12px;
 
     }
 
-    .process-item-title{
+    .faq-q{
 
-        font-size:22px;
+        width:30px;
 
-        margin-bottom:8px;
+        height:30px;
+
+        font-size:14px;
 
     }
 
-    .process-item-desc{
+    .faq-title{
 
-        font-size:15px;
+        font-size:12px;
+
+        line-height:1.5;
+
+    }
+
+    .faq-arrow{
+
+        font-size:12px;
+
+    }
+
+    .faq-answer p{
+
+        width:calc(100% - 60px);
+
+        margin-left:60px;
+
+        padding:18px 18px 18px 0;
+
+        font-size:12px;
 
         line-height:1.7;
 
+        box-sizing:border-box;
+
     }
 
+    .contact{
 
- 
+    padding:70px 0;
+
+}
+
+.contact-wrap{
+
+    gap:40px;
+
+}
+
+.contact-title{
+
+    margin-bottom:28px;
+
+}
+
+.contact-subtitle{
+
+    font-size:13px;
+
+}
+
+.contact-heading{
+
+    font-size:30px;
+
+    line-height:1.35;
+
+}
+
+.contact-info{
+
+    gap:14px;
+
+}
+
+.contact-info li{
+
+    gap:10px;
+
+}
+
+.contact-info img{
+
+    width:20px;
+
+    height:20px;
+
+}
+
+.contact-info span{
+
+    font-size:14px;
+
+}
+
+.contact-image{
+
+    display:none;
+
+}
+
+.contact-form-box{
+
+    width:100%;
+
+    padding:24px 20px;
+
+    border-radius:28px;
+
+}
+
+.form-head{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:22px;
+
+}
+
+.form-head h3{
+
+    font-size:24px;
+
+}
+
+.form-head p{
+
+    font-size:11px;
+
+}
+
+.form-group{
+
+    grid-template-columns:1fr;
+
+    gap:8px;
+
+}
+
+.form-group label{
+
+    font-size:15px;
+
+}
+
+.form-group input,
+.form-group select{
+
+    height:46px;
+
+    padding:0 16px;
+
+    font-size:14px;
+
+    border-radius:23px;
+
+}
+
+.form-group textarea{
+
+    height:170px;
+
+    padding:16px;
+
+    font-size:14px;
+
+    border-radius:18px;
+
+}
+
+.form-check{
+
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:6px;
+
+}
+
+.form-check span{
+
+    font-size:12px;
+
+}
+
+.form-check a{
+
+    font-size:12px;
+
+}
+
+.contact-btn{
+
+    height:52px;
+
+    margin-top:14px;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+}
+
+
+.footer{
+
+    padding:36px 0;
+
+}
+
+.footer-wrap{
+
+  display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:24px;
+
+}
+
+.footer-logo img{
+
+    width:90px;
+
+}
+
+.footer-info{
+
+   display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    width:100%;
+
+}
+
+.footer-info p{
+
+    font-size:12px;
+
+    line-height:1.6;
+
+}
+
+
+.footer-info small{
+
+    margin-top:12px;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+}
+
+.footer-sns{
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.footer-sns a{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:18px;
+
+}
+
+
+
 
 }
