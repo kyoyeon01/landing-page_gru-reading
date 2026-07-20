@@ -4828,21 +4828,14 @@ width:calc(100% - 104px);
 
 
 .footer-info small{
-
     margin-top:12px;
-
     font-size:11px;
-
-    line-height:1.6;
-
+    line-height:1.7;
 }
 
 .footer-sns{
-
     justify-content:center;
-
     gap:12px;
-
 }
 
 .footer-sns a{
