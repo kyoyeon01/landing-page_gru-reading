@@ -26,7 +26,7 @@
 // });
 
 
-
+// ===================== 햄버거 메뉴 열고 닫기 ====================== 
 const menuBtn = document.querySelector(".menu-btn");
 const mobileMenu = document.querySelector(".mobile-menu");
 const overlay = document.querySelector(".overlay");
@@ -47,8 +47,22 @@ overlay.addEventListener("click", () => {
     overlay.classList.remove("active");
 
 });
+// 모바일 메뉴 클릭 시 닫기
+const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
+mobileLinks.forEach(link => {
 
+    link.addEventListener("click", () => {
+
+        menuBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+
+    });
+
+});
+
+// ============== counter ============= 
 
 // 숫자 가져오기
 const counters = document.querySelectorAll(".counter-num");
@@ -105,170 +119,144 @@ observer.observe(counterSection);
 /* ==========================================
    Compare Slider
 ========================================== */
-
 const compareCards = document.querySelectorAll(".compare-card");
 
 compareCards.forEach((card) => {
 
-  const before = card.querySelector(".compare-before");
-  const after = card.querySelector(".compare-after");
+    const before = card.querySelector(".compare-before");
+    const after = card.querySelector(".compare-after");
 
-  const beforeContent = card.querySelector(".compare-content-before");
-  const afterContent = card.querySelector(".compare-content-after");
+    const beforeContent = card.querySelector(".compare-content-before");
+    const afterContent = card.querySelector(".compare-content-after");
 
-  const divider = card.querySelector(".compare-divider");
+    const divider = card.querySelector(".compare-divider");
 
-  const GAP = 34;
-  const SIDE = 24;
-  const LIMIT = 25;
+    const GAP = 50;
+    const SIDE = 24;
+    const LIMIT = 25;
 
-  let dragging = false;
-  let position = card.offsetWidth * 0.55;
-
-  update(position);
-
-  /* =====================
-      Drag Start
-  ===================== */
-
-  divider.addEventListener("pointerdown", (e) => {
-
-    dragging = true;
-
-    divider.setPointerCapture(e.pointerId);
-
-  });
-
-  /* =====================
-      Drag End
-  ===================== */
-
-  window.addEventListener("pointerup", () => {
-
-    dragging = false;
-
-  });
-
-  window.addEventListener("pointercancel", () => {
-
-    dragging = false;
-
-  });
-
-  /* =====================
-      Drag Move
-  ===================== */
-
-  window.addEventListener("pointermove", (e) => {
-
-    if (!dragging) return;
-
-    const rect = card.getBoundingClientRect();
-
-    position = e.clientX - rect.left;
-
-    position = Math.max(
-      LIMIT,
-      Math.min(position, rect.width - LIMIT)
-    );
+    let dragging = false;
+    let position = card.offsetWidth * 0.55;
 
     update(position);
 
-  });
+    /* =====================
+        Drag Start
+    ===================== */
 
-  /* =====================
-      Click Move
-  ===================== */
+    divider.addEventListener("pointerdown", (e) => {
 
-  card.addEventListener("click", (e) => {
+        dragging = true;
+        divider.setPointerCapture(e.pointerId);
 
-    if (dragging) return;
+    });
 
-    const rect = card.getBoundingClientRect();
+    /* =====================
+        Drag End
+    ===================== */
 
-    position = e.clientX - rect.left;
+    window.addEventListener("pointerup", () => {
 
-    position = Math.max(
-      LIMIT,
-      Math.min(position, rect.width - LIMIT)
-    );
+        dragging = false;
 
-    update(position);
+    });
 
-  });
+    window.addEventListener("pointercancel", () => {
 
-  /* =====================
-      Resize
-  ===================== */
+        dragging = false;
 
-  window.addEventListener("resize", () => {
+    });
 
-    position = card.offsetWidth * 0.55;
+    /* =====================
+        Drag Move
+    ===================== */
 
-    update(position);
+    window.addEventListener("pointermove", (e) => {
 
-  });
+        if (!dragging) return;
 
-  /* =====================
-      Update
-  ===================== */
+        const rect = card.getBoundingClientRect();
 
+        position = e.clientX - rect.left;
 
+        position = Math.max(
+            LIMIT,
+            Math.min(position, rect.width - LIMIT)
+        );
 
+        update(position);
 
-  function update(pos) {
+    });
 
-    const cardWidth = card.offsetWidth;
+    /* =====================
+        Click Move
+    ===================== */
 
-    /* ------------------
-        Overlay
-    ------------------ */
+    card.addEventListener("click", (e) => {
 
-    before.style.width = `${pos}px`;
+        if (dragging) return;
 
-    after.style.width = `${cardWidth - pos}px`;
+        const rect = card.getBoundingClientRect();
 
-    /* ------------------
-        Divider
-    ------------------ */
+        position = e.clientX - rect.left;
 
-    divider.style.left = `${pos}px`;
+        position = Math.max(
+            LIMIT,
+            Math.min(position, rect.width - LIMIT)
+        );
 
-    /* ------------------
-        Before Text
-    ------------------ */
+        update(position);
 
-    const beforeWidth = Math.max(
-      pos - SIDE - 8,
-      30
-    );
+    });
 
-    beforeContent.style.left = `${SIDE}px`;
-    beforeContent.style.width = `${beforeWidth}px`;
+    /* =====================
+        Resize
+    ===================== */
 
-    /* ------------------
-        After Text
-    ------------------ */
+    window.addEventListener("resize", () => {
 
-    const afterLeft = pos + GAP;
+        position = card.offsetWidth * 0.55;
 
-    const afterWidth = Math.max(
-      cardWidth - afterLeft - SIDE,
-      120
-    );
+        update(position);
 
-    afterContent.style.left = `${afterLeft}px`;
-    afterContent.style.width = `${afterWidth}px`;
+    });
 
-    const opacity = Math.max(0, Math.min(1, (pos - 70) / 60));
+    /* =====================
+        Update
+    ===================== */
 
-    beforeContent.style.opacity = opacity;
+    function update(pos) {
 
-  }
+        const cardWidth = card.offsetWidth;
+
+        /* Overlay */
+
+        before.style.width = `${pos}px`;
+        after.style.width = `${cardWidth - pos}px`;
+
+        /* Divider */
+
+        divider.style.left = `${pos}px`;
+
+        /* Before Text */
+
+        beforeContent.style.left = `${SIDE}px`;
+
+        /* After Text */
+
+        const afterLeft = pos + GAP;
+
+        afterContent.style.left = `${afterLeft}px`;
+
+        /* Before Text Opacity */
+
+        const opacity = Math.max(0, Math.min(1, (pos - 70) / 60));
+
+        beforeContent.style.opacity = opacity;
+
+    }
 
 });
-
-
 
 
 // ==================
@@ -452,5 +440,86 @@ faqItems.forEach((item) => {
 
 });
 
+/* =====================================================
+   Privacy Modal
+===================================================== */
 
+const privacyOpen = document.querySelector(".privacy-open");
+const privacyModal = document.querySelector(".privacy-modal");
+const privacyClose = document.querySelector(".privacy-close");
+const privacyConfirm = document.querySelector(".privacy-confirm");
+
+/* =====================
+    Open
+===================== */
+
+privacyOpen.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    privacyModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+});
+
+/* =====================
+    Close Function
+===================== */
+
+function closePrivacyModal() {
+
+    privacyModal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+/* =====================
+    Close Button
+===================== */
+
+privacyClose.addEventListener("click", () => {
+
+    closePrivacyModal();
+
+});
+
+/* =====================
+    Confirm Button
+===================== */
+
+privacyConfirm.addEventListener("click", () => {
+
+    closePrivacyModal();
+
+});
+
+/* =====================
+    Overlay Click
+===================== */
+
+privacyModal.addEventListener("click", (e) => {
+
+    if (e.target === privacyModal) {
+
+        closePrivacyModal();
+
+    }
+
+});
+
+/* =====================
+    ESC
+===================== */
+
+window.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape" && privacyModal.classList.contains("active")) {
+
+        closePrivacyModal();
+
+    }
+
+});
 
