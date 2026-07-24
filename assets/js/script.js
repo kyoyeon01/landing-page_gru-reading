@@ -247,6 +247,7 @@ compareCards.forEach((card) => {
         const afterLeft = pos + GAP;
 
         afterContent.style.left = `${afterLeft}px`;
+        afterContent.style.right = "auto";
 
         /* Before Text Opacity */
 
